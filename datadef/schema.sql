@@ -1,0 +1,71 @@
+drop table term_information;  --  刑期信息
+drop table medical_history;  --  病史
+drop table rewords_punishments_information;  --  奖惩信息
+drop table jail;  --  监室 
+drop table prisoner;  --犯人信息
+
+create table prisoner --犯人信息
+	(
+
+	file_number numeric(18,0), --档案号:441781AAAABBBBXXXX
+	Political_status		varchar(8), --政治面貌:群众，党员，团员，其他
+	education_background		varchar(8),--学历：小学，初中，高中，大专，本科，其他
+	name		varchar(8),--姓名
+	birth_date  date,--出生日期：YYYY-MM-DD
+	sex   varchar(2),--性别：男，女
+	native_place  varchar(16),--籍贯：广东广州
+	nationality  varchar(10),--民族：
+	address  varchar(50),--家庭住址：广东省广州市番禺区大学城校区华南理工大学C10楼栋714
+	family_background  varchar(16),--家庭情况：父母健在，父母双亡，独亲家庭
+	blood_type  varchar(4),--血型：A,B,O,AB
+	job   varchar(16),--工作：程序员，老师
+
+
+
+	time_to_jail date,--入监时间：YYYY-MM-DD
+	information_in_jail varchar(16), -- 入监信息：是否惯犯，行为恶劣
+	register_in_jail varchar(4),-- 入监登记:送犯人过来的警官的名字
+	  
+	 primary key (file_number)
+	);
+	create table term_information  --  刑期信息
+	(
+	file_number numeric(18,0), --档案号:441781AAAABBBBXXXX
+	 prison_term  date,--刑期
+     penalty_kind varchar(16),--刑种
+     charge varchar(64), --罪名 
+	 primary key (file_number),
+	 foreign key (file_number) references prisoner
+		on delete cascade
+	);
+
+	create table medical_history  --  病史
+	(
+	file_number numeric(18,0), --档案号:441781AAAABBBBXXXX
+    illness_time    varchar(16), -- 病史.时间
+    illness_symptom  varchar(16), -- 病症
+	 primary key (file_number),
+	 foreign key (file_number) references prisoner
+		on delete cascade
+	);
+	create table  rewords_punishments_information  --  奖惩信息
+	(
+	file_number numeric(18,0), --档案号:441781AAAABBBBXXXX
+    rpi_time    varchar(16), --奖惩信息.时间
+    sentencing_condition varchar(16), --量刑情况
+	rpi_type  varchar(16),-- 类型
+	 primary key (file_number),
+	 foreign key (file_number) references prisoner
+		on delete cascade
+	);
+	   
+    create table  jail  --  监室 
+	(
+	
+    jail_number    numeric(3,0), --监室编号:714
+    jail_equipment varchar(32), --设备维修登记检查 
+	jail_check  varchar(32),-- 检查登记:5.29电灯坏，需更换
+	jail_have_person  varchar(2),-- 是否有人 
+	 primary key (jail_number),
+
+	);
