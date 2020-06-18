@@ -80,7 +80,7 @@ public class LearnController {
     	List<Jail> jailList =new ArrayList<Jail>();
     	Jail p = restTemplate.getForObject("http://localhost:8761/get/jail/jail_number=" + id, Jail.class);
     	jailList.add(p); 
-        System.out.println("NAME = " + p.jail_number.toString());
+        System.out.println("NAME = "+p.jail_number.toString());
         ModelAndView modelAndView = new ModelAndView("jail_info");
         modelAndView.addObject("data_list", jailList);
         return modelAndView;
