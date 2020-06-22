@@ -56,7 +56,7 @@
         td {
             width: 100px;
             text-align: center;
-            overflow-x: scroll;
+            /* overflow-x: scroll; */
 
         }
 
@@ -102,11 +102,12 @@
         </br>
 
         <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
-            <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
+            <table align="center" border="1" width="1500" cellpadding="25" cellspacing="0">
                 <tr>
                     <td>档案号</td>
                     <td>政治面貌</td>
                     <td>学历</td>
+                    
                     <td>姓名</td>
                     <td>出生日期</td>
 
@@ -123,6 +124,8 @@
                     <td>入职信息</td>
 
                 </tr>
+                <!--/*@thymesVar id="learnList" type=""*/-->
+
                 <tr th:each="i : ${data_list}" class="text-info">
                     <td th:text="${i.manager_file_number}"></td>
                     <td th:text="${i.manager_politics_status}"></td>
@@ -139,8 +142,8 @@
                     <td th:text="${i.manager_meidical_history}"></td>
                     <td th:text="${i.manager_work}"></td>
 
-                    <td th:text="${i.manager_entry_time}"></td>
-                    <td th:text="${i.manager_entry_information}"></td>
+                    <td th:text="${i.entry_time}"></td>
+                    <td th:text="${i.entry_information}"></td>
 
 
 
@@ -153,7 +156,7 @@
     <div class="footer" id="foot">
         <div class="copyright">
             <div class="img">
-                <i class="icon"></i><span>联系邮箱：986610875@qq.com</span>
+                <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
             </div>
 
             <div class="img">
@@ -161,8 +164,9 @@
             </div>
 
             <div class="img">
-                <i class="icon2"></i><span>联系电话：18107681418</span>
+                <i class="icon2"></i><span>联系电话：13502416987</span>
             </div>
+
 
 
         </div>
