@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>身份证号查询</title>
+    <style>
+        #head {
+            height: 120px;
+            width: 100;
+            background-color: rgb(204, 255, 255);
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-family: "宋体";
+            color: #000000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            font-size: 36px;
+            height: 40px;
+            width: 30%;
+        }
+
+        #foot {
+            width: 100;
+            height: 126px;
+            background-color: #CC9933;
+            position: relative;
+        }
+
+        .copyright {
+            font-family: "宋体";
+            color: #FFFFFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            height: 60px;
+            width: 40%;
+            text-align: center;
+        }
+
+        #wrap {
+            height: 719px;
+            width: 100;
+            background-color: rgb(245, 245, 245);
+        }
+
+        td {
+            width: 100px;
+            text-align: center;
+            overflow-x: scroll;
+
+        }
+
+        
+        
+        .input {
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<div class="header" id="head">
+    <div class="title">身份证号查询</div>
+
+</div>
+
+
+<body>
+    <div id="wrap">
+        <br>
+        <div id="wrap">
+            <br>
+            </br>
+            <div class="input">
+                <span>身份证号:</span>
+                <span>
+
+                    <input type="text" id="visit_person_id_input" />
+                    <button type="button" id="inquire_button">查询</button>
+
+                    <script>
+                        document.getElementById("inquire_button").onclick = function () {
+                            var v = document.getElementById("visit_person_id_input").value;
+                            var url = "/get/visit_person_info/visit_person_id=" + v;
+                            window.location.href = url;
+                        }
+                    </script>
+
+                </span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="biaoge" style="width:1500px; height:100; overflow:scroll;">
+                <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
+                    <tr>
+
+                        <td>身份证号</td>
+                        <td>姓名</td>
+                        <td>性别</td>
+                        <td>到访次数</td>
+                        <td>与罪犯关系</td>
+
+                        <td>备注信息</td>
+                        <td>建设性管教</td>
+                        <td>特殊任务</td>
+                        <td>探监人数</td>
+                        <td>探监时间</td>
+
+                        <td>探监记录档案</td>
+                        <td>家庭背景</td>
+                        <td>传染病史</td>
+                        <td>心理精神疾病</td>
+                        <td>犯罪记录</td>
+                    </tr>
+                    <tr th:each="i : ${data_list}" class="text-info">
+                        <td th:text="${i.visit_person_id}"></td>
+                        <td th:text="${i.visit_person_name}"></td>
+                        <td th:text="${i.visit_person_sex}"></td>
+                        <td th:text="${i.visit_times}"></td>
+                        <td th:text="${i.relation_with_prisoner}"></td>
+                        <td th:text="${i.visit_person_remark}"></td>
+
+                        <td th:text="${i.discipline_certainly}"></td>
+                        <td th:text="${i.special_task}"></td>
+                        <td th:text="${i.visit_person_number}"></td>
+                        <td th:text="${i.visit_person_time}"></td>
+                        <td th:text="${i.visit_person_record}"></td>
+
+                        <td th:text="${i.visit_family_background}"></td>
+                        <td th:text="${i.history_of_infection}"></td>
+                        <td th:text="${i.mental_illness}"></td>
+                        <td th:text="${i.criminal_record}"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="footer" id="foot">
+            <div class="copyright">
+                <div class="img">
+                    <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon1"></i><span>联系地址：华南理工大学</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon2"></i><span>联系电话：13502416987</span>
+                </div>
+
+
+            </div>
+
+        </div>
+</body>
+
+</html>
