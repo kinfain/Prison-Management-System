@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>监室信息查询</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探访人员查询</title>
     <style>
         #head {
             height: 120px;
@@ -23,7 +22,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             /* 使用css3的transform来实现 */
-            font-size: 36px;
+            font-size: 40px;
             height: 40px;
             width: 30%;
         }
@@ -49,74 +48,40 @@
         }
         
         #wrap {
-            height: 719px;
+            height: 800px;
             width: 100;
             background-color: rgb(245, 245, 245);
         }
         
-        tr td {
+        a {
+            display: block;
+            height: 120px;
+            font-size: 25px;
+            color: #000;
+            text-decoration: none;
             text-align: center;
+            line-height: 120px;
+            font-family: "宋体";
         }
         
-        .shuru {
-            text-align: center;
+        a:hover {
+            background-color: rgb(56, 192, 233);
         }
     </style>
-
-
 </head>
 
 <div class="header" id="head">
-    <div class="title">监室查询</div>
+    <div class="title">探访人员查询</div>
 
 </div>
 
-
 <body>
     <div id="wrap">
-        <br>
-        </br>
-        <div class="shuru">
-            <span>监室号:</span>
-            <span>
-                <input type="text" id="jail_number_input"/><button type="button" id="query_button" onclick="myFunction()">查询</button>
-                	<script type="text/javascript">
-	function myFunction(){
-		window.location.href="/manager_info;
-		window.location.href="/jail_info/get/jail_number="+document.getElementById("jail_number_input").value;
-	}
-	</script>
-            </span>
-        </div>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <div class="biaoge">
-            <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
-                <tr>
-                    <td>监室编号</td>
-                    <td>设备维修检查登记</td>
-                    <td>检查登记</td>
-                    <td>是否有人</td>
-                </tr>
-                <!--/*@thymesVar id="learnList" type=""*/-->
-                <tr th:each="i : ${data_list}" class="text-info">
-                    <td th:text="${i.jail_number}"></td>
-                    <td th:text="${i.jail_equipment}"></td>
-                    <td th:text="${i.jail_check}"></td>
-                    <td th:text="${i.jail_have_person}"></td>
-                </tr>
-            </table>
-        </div>
+        <a href="#">探监人员基本信息查询</a>
+        <a href="#">探监登记信息查询</a>
+        <a href="#">身份证号查询</a>
+
     </div>
-
-
-
     <div class="footer" id="foot">
         <div class="copyright">
             <div class="img">
