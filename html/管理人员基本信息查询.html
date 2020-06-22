@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>管理人员基本信息查询</title>
+    <style>
+        #head {
+            height: 120px;
+            width: 100;
+            background-color: rgb(204, 255, 255);
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-family: "宋体";
+            color: #000000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            font-size: 36px;
+            height: 40px;
+            width: 30%;
+        }
+
+        #foot {
+            width: 100;
+            height: 126px;
+            background-color: #CC9933;
+            position: relative;
+        }
+
+        .copyright {
+            font-family: "宋体";
+            color: #FFFFFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            height: 60px;
+            width: 40%;
+            text-align: center;
+        }
+
+        #wrap {
+            height: 719px;
+            width: 100;
+            background-color: rgb(245, 245, 245);
+        }
+
+        td {
+            width: 100px;
+            /* text-align: center; */
+            /* overflow-x: scroll; */
+        }
+
+        .input {
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<div class="header" id="head">
+    <div class="title">管理人员基本信息查询</div>
+
+</div>
+
+
+<body>
+    <div id="wrap">
+        <br />
+        <div class="shuru">
+
+
+                <table width="400" align="center">
+                    <tr>
+                        <td>姓名</td>
+                        <td>
+                            <input type="text" id="manager_name_input" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>性别</td>
+                        <td>
+                            <input type="radio" name="sex" id="manager_sex_input" value="男">男
+                            <input type="radio" name="sex" id="manager_sex_input" value="女">女
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>出生日期</td>
+                        <td>
+                            <input type="date" id="manager_birth_date_input">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>血型</td>
+                        <td>
+                            <select id="manager_blood_type_input">
+                                <option>请选择血型</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>AB</option>
+                                <option>O</option>
+                            </select>
+                            <button type="button" id="query_button">查询</button>
+                            <script>
+                                document.getElementById("query_button").onclick = function () {
+                                    var v = document.getElementById("manager_name_input").value;
+                                    var url = "/get/manager_info/manager_name=" + v + "&manager_sex=" + document.getElementById("manager_sex_input").value + "&manager_birth_date=" + document.getElementById("manager_birth_date_input").value + "&manager_blood_type=" + document.getElementById("manager_blood_type_input").value;
+                                    window.location.href = url;
+
+                                }
+
+                            </script>
+
+                        </td>
+
+
+                    </tr>
+                </table>
+
+
+
+            <!-- <p id="demo"></p>
+
+            <script>
+            document.getElementById("demo").innerHTML = 
+            "本页面的完整 URL 是：<br>" + window.location.href;
+            </script> -->
+
+
+            <br />
+
+            <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
+                <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
+                    <tr>
+                        <td>档案号</td>
+                        <td>政治面貌</td>
+                        <td>学历</td>
+
+                        <td>姓名</td>
+                        <td>出生日期</td>
+
+                        <td>性别</td>
+                        <td>籍贯</td>
+                        <td>民族</td>
+                        <td>家庭住址</td>
+                        <td>家庭情况</td>
+                        <td>血型</td>
+                        <td>病史</td>
+                        <td>工作</td>
+
+                        <td>入职时间</td>
+                        <td>入职信息</td>
+                    </tr>
+                    <tr th:each="i : ${data_list}" class="text-info">
+                        <td th:text="${i.manager_file_number}"></td>
+                        <td th:text="${i.manager_politics_status}"></td>
+                        <td th:text="${i.manager_education_background}"></td>
+                        <td th:text="${i.manager_name}"></td>
+                        <td th:text="${i.manager_birth_date}"></td>
+
+                        <td th:text="${i.manager_sex}"></td>
+                        <td th:text="${i.manager_native_place}"></td>
+                        <td th:text="${i.manager_nationality}"></td>
+                        <td th:text="${i.manager_address}"></td>
+                        <td th:text="${i.manager_family_background}"></td>
+                        <td th:text="${i.manager_blood_type}"></td>
+                        <td th:text="${i.manager_meidical_history}"></td>
+                        <td th:text="${i.manager_work}"></td>
+
+                        <td th:text="${i.entry_time}"></td>
+                        <td th:text="${i.entry_information}"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="footer" id="foot">
+            <div class="copyright">
+                <div class="img">
+                    <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon1"></i><span>联系地址：华南理工大学</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon2"></i><span>联系电话：13502416987</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>档案号查询犯人</title>
+    <style>
+        #head {
+            height: 120px;
+            width: 100;
+            background-color: rgb(204, 255, 255);
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-family: "宋体";
+            color: #000000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            font-size: 36px;
+            height: 40px;
+            width: 30%;
+        }
+
+        #foot {
+            width: 100;
+            height: 126px;
+            background-color: #CC9933;
+            position: relative;
+        }
+
+        .copyright {
+            font-family: "宋体";
+            color: #FFFFFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            height: 60px;
+            width: 40%;
+            text-align: center;
+        }
+
+        #wrap {
+            height: 719px;
+            width: 100;
+            background-color: rgb(245, 245, 245);
+        }
+
+        td {
+            width: 100px;
+            text-align: center;
+            /* overflow-x: scroll; */
+
+        }
+
+        
+        
+        .input {
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<div class="header" id="head">
+    <div class="title">档案号查询犯人</div>
+
+</div>
+
+
+<body>
+    <div id="wrap">
+        <br/>
+        <div id="wrap">
+            <br>
+            </br>
+            <div class="input">
+                <span>档案号:</span>
+                <span>
+
+                    <input type="text" id="file_number_input" />
+                    <button type="button" id="inquire_button">查询</button>
+
+                    <script>
+                        document.getElementById("inquire_button").onclick = function () {
+                            var v = document.getElementById("file_number_input").value;
+                            var url = "/get/prisoner_info/file_number_number=" + v;
+                            window.location.href = url;
+                        }
+                    </script>
+
+                </span>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
+                <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
+                    <tr>
+                        
+                        <td>档案号</td>
+                        <td>政治面貌</td>
+                        <td>学历</td>
+                        <td>姓名</td>
+                        <td>出生日期</td>
+                        <td>性别</td>
+                        <td>籍贯</td>
+                        <td>民族</td>
+                        <td>家庭住址</td>
+                        <td>家庭情况</td>
+                        <td>血型</td>
+                        <td>工作</td>
+                        <td>入监时间</td>
+                        <td>入监信息</td>
+                        <td>入监登记</td>
+                        <td>刑期</td>
+                        <td>刑种</td>
+                        <td>罪名</td>
+                        <td>病史</td>
+                        <td>病症</td>
+                        <td>奖惩信息</td>
+                        <td>量刑情况</td>
+                    </tr>
+
+                    <tr th:each="i : ${data_list}" class="text-info">
+                        
+                        <td th:text="${i.file_number}"></td>
+                        <td th:text="${i.political_status}"></td>
+                        <td th:text="${i.education_background}"></td>
+                        <td th:text="${i.name}"></td>
+                        <td th:text="${i.birth_date}"></td>
+                        <td th:text="${i.sex}"></td>
+                        <td th:text="${i.native_place}"></td>
+                        <td th:text="${i.nationality}"></td>
+                        <td th:text="${i.address}"></td>
+                        <td th:text="${i.family_background}"></td>
+                        <td th:text="${i.blood_type}"></td>
+                        <td th:text="${i.job}"></td>
+                        <td th:text="${i.time_to_jail}"></td>
+                        <td th:text="${i.information_in_jail}"></td>
+                        <td th:text="${i.register_in_jail}"></td>
+                        <td th:text="${i.prison_term}"></td>
+                        <td th:text="${i.penalty_kind}"></td>
+                        <td th:text="${i.charge}"></td>
+                        <td th:text="${i.illness_time}"></td>
+                        <td th:text="${i.illness_symptom }"></td>
+                        <td th:text="${i.rpi_time }"></td>
+                        <td th:text="${i.sentencing_condition }"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="footer" id="foot">
+            <div class="copyright">
+                <div class="img">
+                    <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon1"></i><span>联系地址：华南理工大学</span>
+                </div>
+
+                <div class="img">
+                    <i class="icon2"></i><span>联系电话：13502416987</span>
+                </div>
+
+
+            </div>
+
+        </div>
+</body>
+
+</html>
