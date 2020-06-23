@@ -49,6 +49,13 @@ public class Prisoner {
   @Column
   public String register_in_jail; // 入监登记
   
+	@Column(name = "prison_term")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	public Date prison_term;
+	@Column
+	public String penalty_kind;
+	@Column
+  public String charge;
 
 
 }

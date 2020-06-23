@@ -76,7 +76,10 @@ public class PrisonerController {
 	  			.withIgnorePaths("job")
 	  			.withIgnorePaths("time_to_jail")
 	  			.withIgnorePaths("information_in_jail")
-	  			.withIgnorePaths("register_in_jail");	
+	  			.withIgnorePaths("register_in_jail")	
+		        .withIgnorePaths("prison_term")
+		        .withIgnorePaths("penalty_kind")
+		        .withIgnorePaths("charge");	
 	  System.out.println("name = " + name);
 	  System.out.println("sex = " + sex);
 	  System.out.println("birth_date = " + birth_date);

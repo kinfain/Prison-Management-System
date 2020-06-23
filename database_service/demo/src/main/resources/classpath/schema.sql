@@ -18,18 +18,12 @@ create table prisoner --犯人信息
 	time_to_jail date,--入监时间：YYYY-MM-DD
 	information_in_jail varchar(32), -- 入监信息：是否惯犯，行为恶劣
 	register_in_jail varchar(16),-- 入监登记:送犯人过来的警官的名字
-	  
-	 primary key (file_number)
-	);
-create table term_information  --  刑期信息
-	(
-	file_number char(18) not null, --档案号:441781AAAABBBBXXXX
 	prison_term  date,--刑期
 	penalty_kind varchar(16),--刑种
-	charge varchar(64), --罪名 
-	foreign key (file_number) references prisoner
-	on delete cascade
+	charge varchar(64), --罪名
+	 primary key (file_number)
 	);
+
 
 create table medical_history  --  病史
 	(

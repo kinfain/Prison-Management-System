@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.Manager;
 import com.example.demo.entity.MedicalHistory;
 import com.example.demo.entity.RewordsPunishmentsInformation;
-import com.example.demo.entity.TermInformation;
 import com.example.demo.repository.RewordsPunishmentsInformationRepository;
 
 @RestController

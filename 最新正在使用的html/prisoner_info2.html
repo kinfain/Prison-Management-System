@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>档案号查询犯人</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>犯人基本信息查询</title>
     <style>
         #head {
             height: 120px;
@@ -55,13 +55,10 @@
 
         td {
             width: 100px;
-            text-align: center;
+            /* text-align: center; */
             /* overflow-x: scroll; */
-
         }
 
-        
-        
         .input {
             text-align: center;
         }
@@ -71,43 +68,62 @@
 </head>
 
 <div class="header" id="head">
-    <div class="title">档案号查询犯人</div>
+    <div class="title">犯人基本信息查询</div>
 
 </div>
 
 
 <body>
     <div id="wrap">
-        <br/>
-        <div id="wrap">
-            <br>
-            </br>
-            <div class="input">
-                <span>档案号:</span>
-                <span>
+        <br />
+        <div class="shuru">
 
-                    <input type="text" id="file_number_input" />
-                    <button type="button" id="inquire_button">查询</button>
+            <table width="400" align="center">
+                <tr>
+                    <td>姓名</td>
+                    <td>
+                        <input type="text" id="prisoner_name_input" />
+                    </td>
 
-                    <script>
-                        document.getElementById("inquire_button").onclick = function () {
-                            var v = document.getElementById("file_number_input").value;
-                            var url = "/get/prisoner_info/file_number=" + v;
-                            window.location.href = url;
-                        }
-                    </script>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td>
+                        <input type="radio" name="sex" id="prisoner_sex_input" value="男" />男
+                        <input type="radio" name="sex" id="prisoner_sex_input" value="女" />女
+                    </td>
 
-                </span>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                </tr>
+                <tr>
+                    <td>出生日期</td>
+                    <td>
+                        <input type="date" id="prisoner_birth_date_input" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>血型</td>
+                    <td>
+                        <select id="prisoner_blood_type_input" />
+                            <option>请选择血型</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>AB</option>
+                            <option>O</option>
+                        </select>
+                        <button type="button" id="query_button">查询</button>
+                    </td>
+
+
+                </tr>
+            </table>
+			<script src="../static/js/query_prisoner.js" th:src="@{/js/query_prisoner.js}"></script>
+			
+            <br />
 
             <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
                 <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
                     <tr>
-                        
                         <td>档案号</td>
                         <td>政治面貌</td>
                         <td>学历</td>
@@ -127,9 +143,7 @@
                         <td>刑种</td>
                         <td>罪名</td>
                     </tr>
-
                     <tr th:each="i : ${data_list}" class="text-info">
-                        
                         <td th:text="${i.file_number}"></td>
                         <td th:text="${i.political_status}"></td>
                         <td th:text="${i.education_background}"></td>
@@ -167,12 +181,11 @@
                 <div class="img">
                     <i class="icon2"></i><span>联系电话：13502416987</span>
                 </div>
-
-
             </div>
 
         </div>
-    </div>   
+
+    </div>
 </body>
 
 </html>

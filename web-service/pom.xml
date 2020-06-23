@@ -18,6 +18,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -43,7 +44,19 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
+	<dependency>
+ 	   <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.51</version>
+	</dependency>
+        
+     <dependency>  
+    <groupId>net.sourceforge.nekohtml</groupId>  
+    <artifactId>nekohtml</artifactId>  
+    <version>1.9.22</version>  
+     </dependency>    
+        
+        
 	</dependencies>
 
 	<build>

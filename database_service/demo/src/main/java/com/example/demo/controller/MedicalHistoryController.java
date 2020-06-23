@@ -27,15 +27,15 @@ import com.example.demo.repository.MedicalHistoryRepository;
 public class MedicalHistoryController {
 
 	
-	@Autowired
-	MedicalHistoryRepository medicalHistoryRepository;
+	  @Autowired
+	  MedicalHistoryRepository medicalHistoryRepository;
 	
 	  @PostMapping(value="/save/medical_history")
 	  public ResponseEntity<MedicalHistory> saveMedicalHistory(@RequestBody MedicalHistory person){
 		  MedicalHistory p = medicalHistoryRepository.save(person);
 	      return new ResponseEntity<MedicalHistory>(p, HttpStatus.CREATED);
 	  }
-	
+	  
 	  @PostMapping(value="/delete/medical_history")
 	  public int deleteMedicalHistory(@RequestBody MedicalHistory person){
 		  medicalHistoryRepository.delete(person);
@@ -49,7 +49,6 @@ public class MedicalHistoryController {
 			  @PathVariable String id,
 			  @PageableDefault Pageable pageable
 	  ) {  
-		  
 		  ExampleMatcher matcher = ExampleMatcher.matching()
 		            .withMatcher("file_number", match->match.exact())
 		  			.withIgnorePaths("illness_time")

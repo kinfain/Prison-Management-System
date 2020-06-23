@@ -79,14 +79,19 @@
         <div class="shuru">
             <span>监室号:</span>
             <span>
-                <input type="text" id="jail_number_input"/><button type="button" id="query_button" onclick="myFunction()">查询</button>
-                	<script type="text/javascript">
-	function myFunction(){
-		window.location.href="/manager_info;
-		window.location.href="/jail_info/get/jail_number="+document.getElementById("jail_number_input").value;
+   
+                <input type="text" id="jail_number_input"/>
+                <button type="button" id="query_button">查询</button>
+                
+<script>
+    document.getElementById("query_button").onclick = function(){
+    var v = document.getElementById("jail_number_input").value;
+    var url = "/get/jail_info/jail_number=" + v;
+    window.location.href = url; 
 	}
-	</script>
-            </span>
+</script>  
+
+        </span>
         </div>
         <br>
         </br>
