@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Manager {
 	  
 	  @Column(name = "manager_birth_date")
 	  @DateTimeFormat(pattern = "yyyy-MM-dd")
-		public String manager_birth_date;
+		public Date manager_birth_date;
 	  @Column
 		public String manager_sex;
 	  @Column
@@ -47,7 +49,7 @@ public class Manager {
 	  
 	  @Column(name = "manager_entry_time")
 	  @DateTimeFormat(pattern = "yyyy-MM-dd")
-		public String manager_entry_time;
+		public Date manager_entry_time;
 	  @Column
 		public String manager_entry_information;
 }

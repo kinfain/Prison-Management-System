@@ -34,7 +34,7 @@ create table term_information  --  刑期信息
 create table medical_history  --  病史
 	(
 	file_number char(18) not null, --档案号:441781AAAABBBBXXXX
-    illness_time    varchar(16), -- 病史.时间
+    illness_time    date, -- 病史.时间
     illness_symptom  varchar(16), -- 病症
 	foreign key (file_number) references prisoner
 	on delete cascade
@@ -42,7 +42,7 @@ create table medical_history  --  病史
 create table  rewords_punishments_information  --  奖惩信息
 	(
 	file_number char(18) not null, --档案号:441781AAAABBBBXXXX
-    rpi_time    varchar(16), --奖惩信息.时间
+    rpi_time    date, --奖惩信息.时间
     sentencing_condition varchar(16), --量刑情况
 	rpi_type  varchar(16),-- 类型
 	 foreign key (file_number) references prisoner
