@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>监室信息查询</title>
     <style>
         #head {
-            height: 120px;
+            height: 100px;
             width: 100;
-            background-color: rgb(204, 255, 255);
+            background-color: rgb(4, 131, 212);
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
         
         .title {
             font-family: "宋体";
-            color: #000000;
+            color: #fff;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -49,97 +49,217 @@
         }
         
         #wrap {
-            height: 719px;
-            width: 100;
-            background-color: rgb(245, 245, 245);
+            height: 720px;
+            background-color: rgb(240, 240, 240);
+            overflow: hidden;
         }
         
-        tr td {
-            text-align: center;
+        .box1 {
+            height: 650px;
+            background-color: #fff;
+            margin: 0 auto;
+            border: 18px solid rgb(240, 240, 240);
+            border-left-width: 60px;
+            border-right-width: 60px;
+            overflow: hidden;
+            padding: 20px;
         }
         
         .shuru {
+            height: 145px;
+            margin: 0 auto;
+            margin-top: 75px;
+            border: 1px solid rgb(230, 230, 230);
+            overflow: hidden;
+        }
+        /* 调整档案号框所在位置 */
+        
+        .dangan {
+            margin-top: 25px;
+            margin-left: 100px;
+        }
+        /* 确定按钮的位置 */
+        
+        .butt {
+            margin-top: 6px;
+            margin-left: 1250px;
+        }
+        
+        .chaxun {
+            height: 50px;
+            background-color: rgb(244, 244, 244);
+            overflow: hidden;
+        }
+        
+        .biaoge {
+            margin-top: 30px;
+            overflow: scroll;
+        }
+        
+        table.tab {
+            width: 1700px;
+            font-family: verdana, arial, sans-serif;
+            border-width: 1px;
+            border-color: rgb(225, 225, 225);
+            border-collapse: collapse;
+        }
+        
+        table.tab th {
+            font-size: 14px;
+            color: rgb(119, 119, 119);
+            border-width: 1px;
+            padding: 10px 70px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: rgb(249, 249, 249);
+        }
+        
+        table.tab td {
+            font-size: 12px;
+            color: #333333;
+            border-width: 1px;
             text-align: center;
+            padding: 40px 60px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: #ffffff;
+        }
+        
+        h3 {
+            display: inline;
+            font-size: 18px;
+        }
+        
+        .button {
+            background-color: rgb(51, 122, 183);
+            /* Green */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            /* padding: 5px 5px; */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 4px;
+            cursor: pointer;
+        }
+        
+        input {
+            outline-style: none;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 3px;
+            padding: 6px 14px;
+            width: 150px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: "Mivrosoft soft";
+        }
+        
+        input:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
         }
     </style>
-
-
 </head>
 
+
 <div class="header" id="head">
+
     <div class="title">监室查询</div>
 
 </div>
 
 
 <body>
-    <div id="wrap">
-        <br>
-        </br>
-        <div class="shuru">
-            <span>监室号:</span>
-            <span>
-   
-                <input type="text" id="jail_number_input"/>
-                <button type="button" id="query_button">查询</button>
-                
-<script>
-    document.getElementById("query_button").onclick = function(){
-    var v = document.getElementById("jail_number_input").value;
-    var url = "/get/jail_info/jail_number=" + v;
-    window.location.href = url; 
-	}
-</script>  
+    <!-- 底色为灰色的大框框 -->
+    <div class="wrap" id="wrap">
+        <!-- 包含整个内容的大框框，底色为白色 -->
+        <div class="box1">
+            <!-- 输入框 -->
+            <div class="shuru">
+                <!-- 档案号输入框 -->
+                <div class="dangan">
+                    <h3>监室号:</h3> &nbsp;
+                    <input type="text" id="jail_number_input" />
+                </div>
+            </div>
+            <!-- 查询按钮 -->
+            <div class="chaxun">
+                <!-- 确定按钮的位置 -->
+                <div class="butt">
+                    <button class="button" type="button" id="query_button">查询</button>
 
-        </span>
-        </div>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <br>
-        </br>
-        <div class="biaoge">
-            <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
-                <tr>
-                    <td>监室编号</td>
-                    <td>设备维修检查登记</td>
-                    <td>检查登记</td>
-                    <td>是否有人</td>
-                </tr>
-                <!--/*@thymesVar id="learnList" type=""*/-->
-                <tr th:each="i : ${data_list}" class="text-info">
-                    <td th:text="${i.jail_number}"></td>
-                    <td th:text="${i.jail_equipment}"></td>
-                    <td th:text="${i.jail_check}"></td>
-                    <td th:text="${i.jail_have_person}"></td>
-                </tr>
-            </table>
+                    <script>
+                        document.getElementById("query_button").onclick = function() {
+
+                            var v = document.getElementById("jail_number_input").value;
+
+                            var url = "/get/jail_info/jail_number=" + v;
+
+                            window.location.href = url;
+
+                        }
+                    </script>
+                </div>
+            </div>
+            <!-- 表格 -->
+            <div class="biaoge">
+                <table class="tab">
+                    <tr>
+
+                        <th>监室编号</th>
+                        <th>设备维修检查登记</th>
+                        <th>检查登记</th>
+                        <th>是否有人</th>
+
+                    </tr>
+
+
+
+                    <tr th:each="i : ${data_list}" class="text-info">
+
+                        <td th:text="${i.jail_number}"></td>
+
+                        <td th:text="${i.jail_equipment}"></td>
+
+                        <td th:text="${i.jail_check}"></td>
+
+                        <td th:text="${i.jail_have_person}"></td>
+                    </tr>
+
+                </table>
+            </div>
         </div>
     </div>
-
-
 
     <div class="footer" id="foot">
+
         <div class="copyright">
+
             <div class="img">
-                <i class="icon"></i><span>联系邮箱：986610875@qq.com</span>
+
+                <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+
             </div>
 
             <div class="img">
+
                 <i class="icon1"></i><span>联系地址：华南理工大学</span>
+
             </div>
 
             <div class="img">
-                <i class="icon2"></i><span>联系电话：18107681418</span>
-            </div>
 
+                <i class="icon2"></i><span>联系电话：13502416987</span>
+
+            </div>
 
         </div>
-
     </div>
+
 </body>
 
 </html>

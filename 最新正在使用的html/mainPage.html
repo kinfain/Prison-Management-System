@@ -1,143 +1,177 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>华南监狱管理系统</title>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎进入监狱管理系统</title>
     <style type="text/css">
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-    
-    #head 
-    {
-	  height: 120px;
-	  width: 100;
-	  background-color: #66CCCC;
-	  text-align: center;
-	  position: relative;
-    }
-
-
-    #wrap 
-    {
-	  height: 1040px;
-	  width: 100;
-	  background-image: url(./image/yellow.jpg);
-	  background-repeat: no-repeat;
-	  background-position: center center;
-	  position: relative;
-    }
-
-    #foot 
-    {
-	  width: 100;
-	  height: 126px;
-	  background-color: #CC9933;
-	  position: relative;
-    }
-
-    .title 
-    {
-	  font-family: "宋体";
-	  color: #FFFFFF;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
-	  font-size: 36px;
-	  height: 40px;
-	  width: 30%;
-    }
-
-    .copyright 
-    {
-	  font-family: "宋体";
-	  color: #FFFFFF;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
-	  height: 60px;
-	  width: 40%;
-	  text-align:center;
-    }
-   
-    .wrap .login
-    {
-	  width: 100%;
-	  margin-top: 0px;
-	  margin-right: auto;
-	  margin-bottom: 0px;
-	  margin-left: auto;
-      text-align:center;
-    }
-
-
-a {
-    display: block;
-    height: 160px;
-    font-size: 40px;
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    line-height: 160px;
-    font-family: "宋体";
-}
         
-a:hover {
-     background-color: rgb(56, 192, 233);
-}
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        #head {
+            height: 120px;
+            width: 100;
+            background-color: #66CCCC;
+            text-align: center;
+            position: relative;
+        }
+        
+        #foot {
+            width: 100;
+            height: 126px;
+            background-color: #CC9933;
+            position: relative;
+        }
+        
+        .wrap {
+            height: 720px;
+            /* background-image: url(./yellow.jpg);
+            background-repeat: no-repeat;
+            background-position: center center; */
+            /* position: relative; */
+            /* margin: 0 auto; */
+        }
+        
+        .title {
+            font-family: "宋体";
+            color: #FFFFFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            font-size: 36px;
+            height: 40px;
+            width: 30%;
+        }
+        
+        .copyright {
+            font-family: "宋体";
+            color: #FFFFFF;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 使用css3的transform来实现 */
+            height: 60px;
+            width: 40%;
+            text-align: center;
+        }
+        
+        .wrap .xuanze {
+            display: inline-block;
+            width: 440px;
+            height: 660px;
+            background-color: #f5f5f5;
+            margin-top: 40px;
+            margin-left: 250px;
+            overflow: hidden;
+        }
+        
+        .wrap .gonggao {
+            display: inline-block;
+            width: 500px;
+            height: 660px;
+            background-color: rgb(255, 204, 153);
+            margin-top: 20px;
+            margin-left: 150px;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        
+        a {
+            display: block;
+            height: 80px;
+            font-size: 30px;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            line-height: 80px;
+            font-family: "宋体";
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        a:hover {
+            background-color: rgb(56, 192, 233);
+        }
+        
+        .biaoti {
+            font-size: 25px;
+            font-weight: normal;
+            text-align: center;
+            line-height: 60px;
+        }
+        
+        p {
+            font-size: 20px;
+            line-height: 40px;
+        }
     </style>
-    
 </head>
 
 <div class="header" id="head">
     <div class="title">监狱管理系统</div>
+
 </div>
 
 <body>
-<div class="wrap" id="wrap">  
-  <br></br>
-  <br></br>
-    <div id="login">
-        <div class="wrapper">
-            <div class="login">
-            	<div><a href="/prisoner_info">犯人信息查询（档案号）</a></div>
-                <div><a href="/prisoner_info2">犯人信息查询（多条件）</a></div>    
-                
-                
-                <div><a href="/manager_info">管理人员信息查询（档案号）</a></div>
-                <div><a href="/manager_info2">管理人员信息查询（多条件）</a></div>    
-                           
-                <div><a href="/jail_info">监室信息</a></div>
 
-                
-                <div><a href="/visitor_info">探访人员信息</a></div>
-                
-            </div>
+    <div class="wrap" id="wrap">
+        <!-- 选择模块 -->
+        <div class="xuanze">
+            <a href="/prisoner_info">犯人信息查询（档案号）</a>
+            <a href="/prisoner_info2">犯人信息查询（多条件）</a>
+            <a href="/manager_info">管理人员信息（档案号）</a>
+            <a href="/manager_info2">管理人员信息（多条件）</a>
+            <a href="/jail_info">监室信息</a>
+            <a href="/visitor_info">探访人员信息</a>
+        </div>
+        <!-- 公告模块 -->
+        <div class="gonggao">
+            <!-- 标题 -->
+            <h3 class="biaoti">公告</h3>
+
+            <p>1.本网站的服刑人员信息查询系统的账号、密码与各监狱门户网站的服刑人员信息查询系统的账号、密码一致。</p>
+            <br />
+            <p>2.各监狱已经将查询账号、密码发给服刑人员亲属。</p>
+            <br />
+            <p>3.如果账号、密码遗失，建议通过以下方法找回：</p>
+            <br />
+            <p>（1）可以在各监狱门户网站的服刑人员信息查询系统的“找回账号、密码”功能中提交相关信息，重新申请，可通过广东省监狱管理局门户网站（网址：http://baidu.com)访问各监狱门户网站。</p>
+            <br />
+            <p>（2）写信向服刑人员咨询。</p>
+            <br />
+            <p>（3）可通过亲情电话向服刑人员本人咨询。</p>
+            <br />
+            <p>4.服刑人员信息查询系统仅供其亲属使用。</p>
         </div>
     </div>
- </div>
-      
     <div class="footer" id="foot">
-  	<div class="copyright">
-    <div class="img">
-		<i class="icon"></i><span>联系邮箱：1141314514@qq.com</span>
-	</div>	
-	<div class="img">
-		<i class="icon1"></i><span>联系地址：华南理工大学</span>
-	</div>	  
-	<div class="img">
-	  <i class="icon2"></i><span>联系电话：1141314514</span>
-	</div> 
-  	</div>	
-	</div>
+        <div class="copyright">
+            <div class="img">
+                <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+            </div>
+            <div class="img">
+                <i class="icon1"></i><span>联系地址：华南理工大学</span>
+            </div>
+            <div class="img">
+                <i class="icon2"></i><span>联系电话：13502416987</span>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
 
 </body>
 

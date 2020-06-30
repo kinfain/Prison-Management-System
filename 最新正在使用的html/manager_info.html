@@ -2,21 +2,22 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>监狱管理人员信息查询</title>
     <style>
         #head {
-            height: 120px;
+            height: 100px;
             width: 100;
-            background-color: rgb(204, 255, 255);
+            background-color: rgb(4, 131, 212);
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
-
+        
         .title {
             font-family: "宋体";
-            color: #000000;
+            color: #fff;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -26,14 +27,14 @@
             height: 40px;
             width: 30%;
         }
-
+        
         #foot {
             width: 100;
             height: 126px;
             background-color: #CC9933;
             position: relative;
         }
-
+        
         .copyright {
             font-family: "宋体";
             color: #FFFFFF;
@@ -46,128 +47,267 @@
             width: 40%;
             text-align: center;
         }
-
+        
         #wrap {
-            height: 719px;
-            width: 100;
-            background-color: rgb(245, 245, 245);
+            height: 720px;
+            background-color: rgb(240, 240, 240);
+            overflow: hidden;
         }
-
-        td {
-            width: 100px;
-            text-align: center;
-            overflow-x: scroll;
-
+        
+        .box1 {
+            height: 650px;
+            background-color: #fff;
+            margin: 0 auto;
+            border: 18px solid rgb(240, 240, 240);
+            border-left-width: 60px;
+            border-right-width: 60px;
+            overflow: hidden;
+            padding: 20px;
         }
-
+        
         .shuru {
+            height: 145px;
+            margin: 0 auto;
+            margin-top: 75px;
+            border: 1px solid rgb(230, 230, 230);
+            overflow: hidden;
+        }
+        /* 调整档案号框所在位置 */
+        
+        .dangan {
+            margin-top: 25px;
+            margin-left: 100px;
+        }
+        /* 确定按钮的位置 */
+        
+        .butt {
+            margin-top: 6px;
+            margin-left: 1250px;
+        }
+        
+        .chaxun {
+            height: 50px;
+            background-color: rgb(244, 244, 244);
+            overflow: hidden;
+        }
+        
+        .biaoge {
+            margin-top: 30px;
+            overflow: scroll;
+        }
+        
+        table.tab {
+            width: 1700px;
+            font-family: verdana, arial, sans-serif;
+            border-width: 1px;
+            border-color: rgb(225, 225, 225);
+            border-collapse: collapse;
+        }
+        
+        table.tab th {
+            font-size: 14px;
+            color: rgb(119, 119, 119);
+            border-width: 1px;
+            padding: 10px 70px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: rgb(249, 249, 249);
+        }
+        
+        table.tab td {
+            font-size: 12px;
+            color: #333333;
+            border-width: 1px;
             text-align: center;
+            padding: 40px 60px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: #ffffff;
+        }
+        
+        h3 {
+            display: inline;
+            font-size: 18px;
+        }
+        
+        .button {
+            background-color: rgb(51, 122, 183);
+            /* Green */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            /* padding: 5px 5px; */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 4px;
+            cursor: pointer;
+        }
+        
+        input {
+            outline-style: none;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 3px;
+            padding: 6px 14px;
+            width: 150px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: "Mivrosoft soft";
+        }
+        
+        input:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
         }
     </style>
 </head>
 
+
 <div class="header" id="head">
+
     <div class="title">监狱管理人员查询</div>
 
 </div>
 
+
 <body>
-    <div id="wrap">
-        <br>
-        </br>
-        <br>
-        </br>
+    <!-- 底色为灰色的大框框 -->
+    <div class="wrap" id="wrap">
+        <!-- 包含整个内容的大框框，底色为白色 -->
+        <div class="box1">
+            <!-- 输入框 -->
+            <div class="shuru">
+                <!-- 档案号输入框 -->
+                <div class="dangan">
+                    <h3>档案号:</h3> &nbsp;
+                    <input type="text" id="manager_number_input" />
+                </div>
+            </div>
+            <!-- 查询按钮 -->
+            <div class="chaxun">
+                <!-- 确定按钮的位置 -->
+                <div class="butt">
+                    <button class="button" type="button" id="query_button">查询</button>
 
-        <div class="shuru">
-            <span>档案号:</span>
+                    <script>
+                        document.getElementById("query_button").onclick = function() {
 
+                            var v = document.getElementById("manager_number_input").value;
 
-            <span>
+                            var url = "/get/manager_info/manager_file_number=" + v;
 
-                <input type="text" id="manager_number_input" />
-                <button type="button" id="query_button">查询</button>
+                            window.location.href = url;
 
-                <script>
-                    document.getElementById("query_button").onclick = function () {
-                        var v = document.getElementById("manager_number_input").value;
-                        var url = "/get/manager_info/manager_file_number=" + v;
-                        window.location.href = url;
-                    }
-                </script>
+                        }
+                    </script>
+                </div>
+            </div>
+            <!-- 表格 -->
+            <div class="biaoge">
+                <table class="tab">
+                    <tr>
 
-
-            </span>
-        </div>
-        <br>
-        </br>
-
-        <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
-            <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
-                <tr>
-                    <td>档案号</td>
-                    <td>政治面貌</td>
-                    <td>学历</td>
-                    <td>姓名</td>
-                    <td>出生日期</td>
-
-                    <td>性别</td>
-                    <td>籍贯</td>
-                    <td>民族</td>
-                    <td>家庭住址</td>
-                    <td>家庭情况</td>
-                    <td>血型</td>
-                    <td>病史</td>
-                    <td>工作</td>
-
-                    <td>入职时间</td>
-                    <td>入职信息</td>
-
-                </tr>
-                <tr th:each="i : ${data_list}" class="text-info">
-                    <td th:text="${i.manager_file_number}"></td>
-                    <td th:text="${i.manager_politics_status}"></td>
-                    <td th:text="${i.manager_education_background}"></td>
-                    <td th:text="${i.manager_name}"></td>
-                    <td th:text="${i.manager_birth_date}"></td>
-
-                    <td th:text="${i.manager_sex}"></td>
-                    <td th:text="${i.manager_native_place}"></td>
-                    <td th:text="${i.manager_nationality}"></td>
-                    <td th:text="${i.manager_address}"></td>
-                    <td th:text="${i.manager_family_background}"></td>
-                    <td th:text="${i.manager_blood_type}"></td>
-                    <td th:text="${i.manager_meidical_history}"></td>
-                    <td th:text="${i.manager_work}"></td>
-
-                    <td th:text="${i.manager_entry_time}"></td>
-                    <td th:text="${i.manager_entry_information}"></td>
+                        <th>档案号</th>
+                        <th>政治面貌</th>
+                        <th>学历</th>
+                        <th>姓名</th>
+                        <th>出生日期</th>
+                        <th>性别</th>
+                        <th>籍贯</th>
+                        <th>民族</th>
+                        <th>家庭住址</th>
+                        <th>家庭情况</th>
+                        <th>血型</th>
+                        <th>病史</th>
+                        <th>工作</th>
 
 
 
-                </tr>
-            </table>
+                        <th>入职时间</th>
+
+                        <th>入职信息</th>
+
+
+                    </tr>
+
+
+
+                    <tr th:each="i : ${data_list}" class="text-info">
+
+                        <td th:text="${i.manager_file_number}"></td>
+
+                        <td th:text="${i.manager_politics_status}"></td>
+
+                        <td th:text="${i.manager_education_background}"></td>
+
+                        <td th:text="${i.manager_name}"></td>
+
+                        <td th:text="${i.manager_birth_date}"></td>
+
+
+
+                        <td th:text="${i.manager_sex}"></td>
+
+                        <td th:text="${i.manager_native_place}"></td>
+
+                        <td th:text="${i.manager_nationality}"></td>
+
+                        <td th:text="${i.manager_address}"></td>
+
+                        <td th:text="${i.manager_family_background}"></td>
+
+                        <td th:text="${i.manager_blood_type}"></td>
+
+                        <td th:text="${i.manager_meidical_history}"></td>
+
+                        <td th:text="${i.manager_work}"></td>
+
+
+
+                        <td th:text="${i.manager_entry_time}"></td>
+
+                        <td th:text="${i.manager_entry_information}"></td>
+
+
+
+
+
+
+
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
 
     <div class="footer" id="foot">
+
         <div class="copyright">
+
             <div class="img">
-                <i class="icon"></i><span>联系邮箱：986610875@qq.com</span>
+
+                <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+
             </div>
 
             <div class="img">
+
                 <i class="icon1"></i><span>联系地址：华南理工大学</span>
+
             </div>
 
             <div class="img">
-                <i class="icon2"></i><span>联系电话：18107681418</span>
-            </div>
 
+                <i class="icon2"></i><span>联系电话：13502416987</span>
+
+            </div>
 
         </div>
-
     </div>
+
 </body>
 
 </html>

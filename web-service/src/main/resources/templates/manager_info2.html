@@ -2,21 +2,22 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理人员基本信息查询</title>
     <style>
         #head {
-            height: 120px;
+            height: 100px;
             width: 100;
-            background-color: rgb(204, 255, 255);
+            background-color: rgb(4, 131, 212);
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
-
+        
         .title {
             font-family: "宋体";
-            color: #000000;
+            color: #fff;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -26,14 +27,14 @@
             height: 40px;
             width: 30%;
         }
-
+        
         #foot {
             width: 100;
             height: 126px;
             background-color: #CC9933;
             position: relative;
         }
-
+        
         .copyright {
             font-family: "宋体";
             color: #FFFFFF;
@@ -46,134 +47,344 @@
             width: 40%;
             text-align: center;
         }
-
+        
         #wrap {
-            height: 719px;
-            width: 100;
-            background-color: rgb(245, 245, 245);
+            height: 720px;
+            background-color: rgb(240, 240, 240);
+            overflow: hidden;
         }
-
-        td {
-            width: 100px;
-            /* text-align: center; */
-            /* overflow-x: scroll; */
+        
+        .box1 {
+            height: 650px;
+            background-color: #fff;
+            margin: 0 auto;
+            border: 18px solid rgb(240, 240, 240);
+            border-left-width: 60px;
+            border-right-width: 60px;
+            overflow: hidden;
+            padding: 20px;
         }
-
-        .input {
+        
+        .shuru {
+            height: 145px;
+            margin: 0 auto;
+            margin-top: 75px;
+            border: 1px solid rgb(230, 230, 230);
+            overflow: hidden;
+        }
+        /* 调整档案号框所在位置 */
+        
+        .box2 {
+            width: 1175px;
+            height: 150px;
+            margin: 0 auto;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        /* 确定按钮的位置 */
+        
+        .butt {
+            margin-top: 6px;
+            margin-left: 1250px;
+        }
+        
+        .chaxun {
+            height: 50px;
+            background-color: rgb(244, 244, 244);
+            overflow: hidden;
+        }
+        
+        .biaoge {
+            margin-top: 30px;
+            overflow: scroll;
+        }
+        
+        table.tab {
+            width: 1700px;
+            font-family: verdana, arial, sans-serif;
+            border-width: 1px;
+            border-color: rgb(225, 225, 225);
+            border-collapse: collapse;
+        }
+        
+        table.tab th {
+            font-size: 14px;
+            color: rgb(119, 119, 119);
+            border-width: 1px;
+            padding: 10px 70px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: rgb(249, 249, 249);
+        }
+        
+        table.tab td {
+            font-size: 12px;
+            color: #333333;
+            border-width: 1px;
             text-align: center;
+            padding: 40px 60px;
+            border-style: solid;
+            border-color: rgb(225, 225, 225);
+            background-color: #ffffff;
+        }
+        
+        h3 {
+            display: inline;
+            font-size: 18px;
+        }
+        
+        .button {
+            background-color: rgb(51, 122, 183);
+            /* Green */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            /* padding: 5px 5px; */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 4px;
+            cursor: pointer;
+        }
+        
+        .box2 div {
+            display: inline-block;
+        }
+        
+        .sex {
+            margin-left: 100px;
+        }
+        
+        .birthDate {
+            margin-left: 100px;
+        }
+        
+        .blood {
+            margin-left: 100px;
+        }
+        
+        .name input {
+            outline-style: none;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 3px;
+            padding: 6px 14px;
+            width: 150px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: "Mivrosoft soft";
+        }
+        
+        .birthDate input {
+            outline-style: none;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 3px;
+            padding: 6px 14px;
+            width: 150px;
+            font-size: 14px;
+            font-weight: normal;
+            font-family: "Mivrosoft soft";
+        }
+        
+        input:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+        
+        .select {
+            display: inline-block;
+            width: 160px;
+            position: relative;
+            vertical-align: middle;
+            padding: 0;
+            overflow: hidden;
+            background-color: #fff;
+            color: #555;
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 3px;
+            text-shadow: none;
+            transition: box-shadow 0.25 ease;
+            z-index: 2;
+        }
+        
+        .select:hover {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        }
+        
+        .select:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #ccc;
+            top: 14px;
+            right: 10px;
+            cursor: pointer;
+            z-index: -2;
+        }
+        
+        .select select {
+            cursor: pointer;
+            padding: 8px;
+            width: 100%;
+            border: none;
+            background: transparent;
+            background-image: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
         }
     </style>
-
-
 </head>
 
+
 <div class="header" id="head">
+
     <div class="title">管理人员基本信息查询</div>
 
 </div>
 
 
 <body>
-    <div id="wrap">
-        <br/>
-        <div class="shuru">
+    <!-- 底色为灰色的大框框 -->
+    <div class="wrap" id="wrap">
+        <!-- 包含整个内容的大框框，底色为白色 -->
+        <div class="box1">
+            <!-- 输入框 -->
+            <div class="shuru">
+                <!-- 确定所有输入框的位置 -->
+                <div class="box2">
 
+                    <div class="name">
+                        <h3>姓名:</h3> &nbsp;
+                        <input type="text" id="manager_name_input" />
+                    </div>
 
-            <table width="400" align="center" >
-                <tr>
-                    <td>姓名</td>
-                        <td>
-                            <input type="text" id="manager_name_input" />
-                        </td>
+                    <div class="sex">
+                        <h3>性别:</h3> &nbsp;
+                        <input type="radio" name="sex" id="manager_sex_input" value="男" />男
 
-                    </tr>
-                    <tr>
-                        <td>性别</td>
-                        <td>
-                            <input type="radio" name="sex" id="manager_sex_input" value="男" />男
-                            <input type="radio" name="sex" id="manager_sex_input" value="女" />女
-                        </td>
+                        <input type="radio" name="sex" id="manager_sex_input" value="女" />女
+                    </div>
 
-                    </tr>
-                    <tr>
-                        <td>出生日期</td>
-                        <td>
-                            <input type="date" id="manager_birth_date_input" />
-                        </td>
+                    <div class="birthDate">
+                        <h3>出生日期:</h3> &nbsp;
+                        <input type="date" id="manager_birth_date_input" />
+                    </div>
 
-                    </tr>
-                    <tr>
-                        <td>血型</td>
-                        <td>
+                    <div class="blood">
+                        <h3>血型:</h3> &nbsp;
+                        <div class="select">
                             <select id="manager_blood_type_input">
-                                <option>请选择血型</option>
-                                <option>A</option>
-                                <option>B</option>
-                                <option>AB</option>
-                                <option>O</option>
+
+                            <option>请选择血型</option>
+
+                            <option>A</option>
+
+                            <option>B</option>
+
+                            <option>AB</option>
+
+                            <option>O</option>
+
                             </select>
-                            <button type="button" id="query_button">查询</button>
-                   		 </td>
+                        </div>
 
-                	</tr>
+                    </div>
 
-            </table>
-			<script src="../static/js/query_manager.js" th:src="@{/js/query_manager.js}"></script>
-            
-            
-            <br/>
+                </div>
+            </div>
+            <!-- 查询按钮 -->
+            <div class="chaxun">
+                <!-- 确定按钮的位置 -->
+                <div class="butt">
 
-            <div class="biaoge" style="width:1200px; height:100; overflow:scroll;">
-                <table align="center" border="1" width="1200" cellpadding="25" cellspacing="0">
+                    <button class="button" type="button" id="query_button">查询</button>
+
+                </div>
+            </div>
+
+            <script src="../static/js/query_manager.js" th:src="@{/js/query_manager.js}"></script>
+
+
+            <!-- 表格 -->
+            <div class="biaoge">
+                <table class="tab">
                     <tr>
-                        <td>姓名</td>
-                        <td>出生日期</td>
-                        <td>性别</td>
-                        <td>籍贯</td>
-                        <td>民族</td>
-                        <td>工作</td>
-                        <td>血型</td>
-                        <td>政治面貌</td>
-                        <td>学历</td>
-                        <td>家庭住址</td>
-                        <td>家庭情况</td>
+
+                        <th>姓名</th>
+                        <th>出生日期</th>
+                        <th>性别</th>
+                        <th>籍贯</th>
+                        <th>民族</th>
+                        <th>工作</th>
+                        <th>血型</th>
+                        <th>政治面貌</th>
+                        <th>学历</th>
+                        <th>家庭住址</th>
+                        <th>家庭情况</th>
                     </tr>
+
+
+
                     <tr th:each="i : ${data_list}" class="text-info">
+
                         <td th:text="${i.manager_name}"></td>
+
                         <td th:text="${i.manager_birth_date}"></td>
+
                         <td th:text="${i.manager_sex}"></td>
+
                         <td th:text="${i.manager_native_place}"></td>
+
                         <td th:text="${i.manager_nationality}"></td>
+
                         <td th:text="${i.manager_work}"></td>
+
                         <td th:text="${i.manager_blood_type}"></td>
+
                         <td th:text="${i.manager_politics_status}"></td>
+
                         <td th:text="${i.manager_education_background}"></td>
+
                         <td th:text="${i.manager_address}"></td>
+
                         <td th:text="${i.manager_family_background}"></td>
+
                     </tr>
+
                 </table>
-
             </div>
         </div>
-
-        <div class="footer" id="foot">
-            <div class="copyright">
-                <div class="img">
-                    <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
-                </div>
-
-                <div class="img">
-                    <i class="icon1"></i><span>联系地址：华南理工大学</span>
-                </div>
-
-                <div class="img">
-                    <i class="icon2"></i><span>联系电话：13502416987</span>
-                </div>
-            </div>
-
-        </div>
-
     </div>
+
+    <div class="footer" id="foot">
+
+        <div class="copyright">
+
+            <div class="img">
+
+                <i class="icon"></i><span>联系邮箱：201830660147@mail.scut.edu.cn</span>
+
+            </div>
+
+            <div class="img">
+
+                <i class="icon1"></i><span>联系地址：华南理工大学</span>
+
+            </div>
+
+            <div class="img">
+
+                <i class="icon2"></i><span>联系电话：13502416987</span>
+
+            </div>
+
+        </div>
+    </div>
+
 </body>
 
 </html>
